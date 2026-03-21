@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Xt3LBf6hlkU=",
+  "success": true,
+  "projectFilePath": "/mnt/Y/Y Creative/Games/APIs/Cubic-Grid_Voxel_Core/Core/GalensUnified.CubicGrid.Core.csproj",
+  "expectedPackageFiles": [
+    "/home/galen/.nuget/packages/silk.net.maths/2.23.0/silk.net.maths.2.23.0.nupkg.sha512"
+  ],
+  "logs": []
+}

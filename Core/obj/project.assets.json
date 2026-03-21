@@ -55,11 +55,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/mnt/Y/Y Creative/Games/C# Engineless/EcoSystem/Cubic-Grid_Voxel_Framework/Cubic-Grid_Voxel_Core/Cubic-Grid_Voxel_Core/Cubic-Grid_Voxel_Core.csproj",
-      "projectName": "Cubic-Grid_Voxel_Core",
-      "projectPath": "/mnt/Y/Y Creative/Games/C# Engineless/EcoSystem/Cubic-Grid_Voxel_Framework/Cubic-Grid_Voxel_Core/Cubic-Grid_Voxel_Core/Cubic-Grid_Voxel_Core.csproj",
+      "projectUniqueName": "/mnt/Y/Y Creative/Games/APIs/Cubic-Grid_Voxel_Core/Core/GalensUnified.CubicGrid.Core.csproj",
+      "projectName": "GalensUnified.CubicGrid.Core",
+      "projectPath": "/mnt/Y/Y Creative/Games/APIs/Cubic-Grid_Voxel_Core/Core/GalensUnified.CubicGrid.Core.csproj",
       "packagesPath": "/home/galen/.nuget/packages/",
-      "outputPath": "/mnt/Y/Y Creative/Games/C# Engineless/EcoSystem/Cubic-Grid_Voxel_Framework/Cubic-Grid_Voxel_Core/Cubic-Grid_Voxel_Core/obj/",
+      "outputPath": "/mnt/Y/Y Creative/Games/APIs/Cubic-Grid_Voxel_Core/Core/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/galen/.nuget/NuGet/NuGet.Config"

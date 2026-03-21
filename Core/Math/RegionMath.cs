@@ -1,7 +1,7 @@
 using System.Runtime.CompilerServices;
 using Silk.NET.Maths;
 
-namespace GalensUnified.Cubic_Grid.Core.Math;
+namespace GalensUnified.CubicGrid.Core.Math;
 
 public static class RegionMath
 {
