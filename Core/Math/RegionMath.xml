@@ -1,0 +1,78 @@
+<MyDocs>
+    <MyMembers name="IndexByGlobalPos(Vector3D{int} pos, int length)">
+        <summary>
+        Calculates the 1D index of a 3D global position.
+        </summary>
+        <param name="pos"> The 3D position. </param>
+        <param name="length"> The side length of the cubic region. </param>
+        <returns> A 0 based linear index. </returns>
+    </MyMembers>
+    <MyMembers name="IndexByLocalPos(Vector3D{int} pos, int length)">
+        <summary>
+        Calculates the 1D index of a 3D local position within a cubic region.
+        </summary>
+        <param name="pos"> The 3D position relative to the region's origin. </param>
+        <param name="length"> The side length of the cubic region. </param>
+        <returns> A 0 based linear index. </returns>
+        <remarks>
+        This method assumes <paramref name="pos"/> is within the bounds [0, <paramref name="length"/>)
+        </remarks>
+    </MyMembers>
+    <MyMembers name="LocalPosByGlobalPos(Vector3D{int} pos, int length)">
+        <summary>
+        Wraps a global position into a local position within the cubic region.
+        </summary>
+        <param name="pos"> The 3D position. </param>
+        <param name="length"> The side length of the cubic region. </param>
+        <returns> A 3D position inside a cubic region originated at 0,0,0 </returns>
+        <remarks>
+        Uses a double-masking pattern to correctly handle negative coordinates,
+        ensuring the result is always a positive offset within the region.
+        </remarks>
+    </MyMembers>
+    <MyMembers name="LocalPosByIndex(int index, int length)">
+        <summary>
+        Decodes a 1D linear index into a 3D local position inside a cubic region.
+        </summary>
+        <param name="index"> The 0 based 1D linear index of the cubic region. </param>
+        <param name="length"> The side length of the cubic region. </param>
+        <returns> A 3D position inside a cubic region originated at 0,0,0 </returns>
+    </MyMembers>
+    <MyMembers name="PosLocal(Vector3D{int} pos, int length)">
+        <summary>
+        Determines if a 3D position is within a cubic region.
+        </summary>
+        <param name="pos"> The 3D position. </param>
+        <param name="lengthMask"> The side length of the cubic region. </param>
+        <returns> True when pos is within the cubic region. </returns>
+    </MyMembers>
+    <MyMembers name="IndexByGlobalPosMasked(Vector3D{int} pos, int mask)">
+        <summary>
+        Calculates the 1D index of a 3D global position.
+        </summary>
+        <param name="pos"> The 3D position. </param>
+        <param name="mask"> The bitwise mask length of the cubic region. (e.g 7, 15, 31) </param>
+        <returns> A 0 based linear index. </returns>
+    </MyMembers>
+    <MyMembers name="LocalPosByGlobalPosMasked(Vector3D{int} pos, int mask)">
+        <summary>
+        Wraps a global position into a local position within the cubic region.
+        </summary>
+        <param name="pos"> The 3D position. </param>
+        <param name="mask"> The bitwise mask length of the cubic region. (e.g 7, 15, 31) </param>
+        <returns> A 3D position inside a cubic region originated at 0,0,0 </returns>
+        <remarks>
+        Uses a double-masking pattern to correctly handle negative coordinates,
+        ensuring the result is always a positive offset within the region.
+        </remarks>
+    </MyMembers>
+    <MyMembers name="LocalPosByIndexMaskedShifted(int index, int mask, int shift)">
+        <summary>
+        Decodes a 1D linear index into a 3D local position inside a cubic region.
+        </summary>
+        <param name="index"> The 0 based 1D linear index of the cubic region. </param>
+        <param name="mask"> The bitwise mask length of the cubic region. (e.g 7, 15, 31) </param>
+        <param name="shift"> The number of bits to shift for each dimension (e.g., 4 for a 16-length region, 5 for 32).</param>
+        <returns> A 3D position inside a cubic region originated at 0,0,0 </returns>
+    </MyMembers>
+</MyDocs>
