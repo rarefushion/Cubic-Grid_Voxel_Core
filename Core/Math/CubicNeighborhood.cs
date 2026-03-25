@@ -49,18 +49,50 @@ public static class CubicNeighborhood
         Vector3D<int>.UnitY + Vector3D<int>.UnitX,                          // Right Edge
         Vector3D<int>.UnitY + Vector3D<int>.UnitX - Vector3D<int>.UnitZ     // Back-Right Corner
     ];
-    
-    /// <summary>
-    /// Returns an enumerator that iterates through the Moore neighborhood of a given position up to a specified distance.
-    /// </summary>
-    /// <param name="position">The central starting coordinates.</param>
-    /// <param name="distance">The maximum radius of the neighborhood to explore.</param>
-    /// <param name="scale">The multiplier applied to the step size; defaults to 1.</param>
-    /// <returns>An enumeration of <see cref="Vector3D{int}"/> points surrounding the center.</returns>
-    public static IEnumerable<Vector3D<int>> GetNeighborhood(Vector3D<int> position, int distance, int scale = 1)
+
+    /// <summary>Calculates the positional overlapse for a cube growing in size.</summary>
+    /// <param name="center">Center position of the cube.</param>
+    /// <param name="halfBounds">Half-extents of the bounding region.</param>
+    /// <param name="stride">Step size between positions.</param>
+    /// <returns>Positions ordered from innermost to outermost cube, nearest the center first.</returns>
+    public static IEnumerable<Vector3D<int>> ExpandingCubePositions(Vector3D<int> center, Vector3D<int> halfBounds, int stride)
     {
-        for (int d = 1; d <= distance; d++)
-        for (int i = 0; i < 26; i++)
-            yield return MooreNeighborhood[i] * d * scale + position;
+        Vector3D<int> coord = center / stride;
+        Vector3D<int> halfSteps = halfBounds / stride;
+        Vector3D<int> negRD = (-halfSteps + coord) * stride;
+        Vector3D<int> posRD = (halfSteps + coord) * stride;
+        int maxSteps = System.Math.Max(halfSteps.X, System.Math.Max(halfSteps.Y, halfSteps.Z));
+        for (int i = 0; i <= maxSteps; i++)
+        {
+            Vector3D<int> tmpNeg = Vector3D<int>.Zero;
+            Vector3D<int> tmpPos = Vector3D<int>.Zero;
+            tmpNeg.X = System.Math.Max((-i + coord.X) * stride, negRD.X);
+            tmpNeg.Y = System.Math.Max((-i + coord.Y) * stride, negRD.Y);
+            tmpNeg.Z = System.Math.Max((-i + coord.Z) * stride, negRD.Z);
+            tmpPos.X = System.Math.Min((i + coord.X) * stride, posRD.X);
+            tmpPos.Y = System.Math.Min((i + coord.Y) * stride, posRD.Y);
+            tmpPos.Z = System.Math.Min((i + coord.Z) * stride, posRD.Z);
+            for (int x = tmpNeg.X; x <= tmpPos.X; x += stride)
+            {
+                if (x == tmpNeg.X || x == tmpPos.X)
+                {
+                    for (int y = tmpNeg.Y; y <= tmpPos.Y; y += stride)
+                        for (int z = tmpNeg.Z; z <= tmpPos.Z; z += stride)
+                            yield return new(x, y, z);
+                }
+                else
+                {
+                    for (int y = tmpNeg.Y; y <= tmpPos.Y; y += stride)
+                        yield return new(x, y, tmpNeg.Z);
+                    for (int y = tmpNeg.Y; y <= tmpPos.Y; y += stride)
+                        yield return new(x, y, tmpPos.Z);
+
+                    for (int z = tmpNeg.Z + stride; z <= tmpPos.Z - stride; z += stride)
+                        yield return new(x, tmpNeg.Y, z);
+                    for (int z = tmpNeg.Z + stride; z <= tmpPos.Z - stride; z += stride)
+                        yield return new(x, tmpPos.Y, z);
+                }
+            }
+        }
     }
 }
