@@ -57,7 +57,7 @@ public static class CubicNeighborhood
     /// <param name="distance">The maximum radius of the neighborhood to explore.</param>
     /// <param name="scale">The multiplier applied to the step size; defaults to 1.</param>
     /// <returns>An enumeration of <see cref="Vector3D{int}"/> points surrounding the center.</returns>
-    public static IEnumerator<Vector3D<int>> GetNeighborhood(Vector3D<int> position, int distance, int scale = 1)
+    public static IEnumerable<Vector3D<int>> GetNeighborhood(Vector3D<int> position, int distance, int scale = 1)
     {
         for (int d = 1; d <= distance; d++)
         for (int i = 0; i < 26; i++)
