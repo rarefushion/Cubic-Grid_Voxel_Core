@@ -4,7 +4,7 @@ using Silk.NET.Maths;
 
 namespace GalensUnified.CubicGrid.Core;
 
-public static class Raycasting
+public static partial class Raycasting
 {
     /// <summary>The result of a raycast.</summary>
     /// <param name="Block">The block that was hit. 0 if no block was hit.</param>
