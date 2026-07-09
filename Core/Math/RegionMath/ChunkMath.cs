@@ -29,6 +29,13 @@ public static class ChunkMath<TDims> where TDims : IChunkDims
         (pos.Y & ~mask) == 0 &&
         (pos.Z & ~mask) == 0;
 
+    public static Vector3D<int> FloorToChunk(Vector3D<int> pos) => new
+    (
+        pos.X & ~mask,
+        pos.Y & ~mask,
+        pos.Z & ~mask
+    );
+
     static ChunkMath()
     {
         if (!BitOperations.IsPow2(TDims.Length))
